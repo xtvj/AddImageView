@@ -7,13 +7,10 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.yanzhenjie.permission.AndPermission
-import com.yanzhenjie.permission.runtime.Permission
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
 import com.zhihu.matisse.engine.impl.GlideEngine
 import me.simple.view.AddImageView
-import java.lang.StringBuilder
 
 
 class MainActivity : AppCompatActivity() {
@@ -81,17 +78,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun reqPermission() {
-        AndPermission.with(this)
-            .runtime()
-            .permission(
-                Permission.READ_EXTERNAL_STORAGE,
-                Permission.WRITE_EXTERNAL_STORAGE,
-                Permission.CAMERA
-            )
-            .onGranted {
-                choiceImages()
-            }
-            .start()
+//        AndPermission.with(this)
+//            .runtime()
+//            .permission(
+//                Permission.READ_EXTERNAL_STORAGE,
+//                Permission.WRITE_EXTERNAL_STORAGE,
+//                Permission.CAMERA
+//            )
+//            .onGranted {
+//                choiceImages()
+//            }
+//            .start()
+        choiceImages()
     }
 
     private fun choiceImages() {
@@ -103,6 +101,7 @@ class MainActivity : AppCompatActivity() {
             .forResult(110)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 110 && resultCode == RESULT_OK) {
